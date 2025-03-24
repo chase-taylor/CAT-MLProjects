@@ -1,0 +1,1 @@
+python main.py 3 4 10 test.start test.trans test.emit test.data
