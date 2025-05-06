@@ -1,4 +1,6 @@
 import numpy as np
+import warnings
+warnings.simplefilter(action='ignore', category=FutureWarning)
 import pandas as pd
 import sys
 
@@ -153,7 +155,7 @@ def M_step(gi,gij,gio):
 
 
 def display_data(iteration):
-    print("After iteration " + str(iteration+1) + ":")
+    print("\nAfter iteration " + str(iteration+1) + ":")
     for i in range(len(start)):
         print("pi_" + str(i+1) + ": %0.4f" % start[i], end=" ")
     print()

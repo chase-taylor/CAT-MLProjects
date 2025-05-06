@@ -1,4 +1,6 @@
 import numpy as np
+import warnings
+warnings.simplefilter(action='ignore', category=FutureWarning)
 import pandas as pd
 import sys
 
@@ -10,9 +12,11 @@ def split(df):
     df0, df1 = pd.DataFrame(), pd.DataFrame()
     for i in range(len(df)):
         if df.iat[i,-1] == 0:
-            df0 = df0.append(df.iloc[i:i+1,:-1],ignore_index=True)
+            #df0 = df0.append(df.iloc[i:i+1,:-1],ignore_index=True)
+            df0 = pd.concat([df0,df.iloc[i:i+1,:-1]],ignore_index=True)
         if df.iat[i,-1] == 1:
-            df1 = df1.append(df.iloc[i:i+1,:-1],ignore_index=True)
+            #df1 = df1.append(df.iloc[i:i+1,:-1],ignore_index=True)
+            df1 = pd.concat([df1,df.iloc[i:i+1,:-1]],ignore_index=True)
     return df0, df1
 
 # calculate probabilities of each attribute in a dataframe
